@@ -17,7 +17,7 @@ const IconText = ({ type, text }) => (
 class Index extends Component {
  
     constructor() {
-        super()
+        super();
         this.state = {
           data: [],
         }

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import {Rate,Layout,Menu, Breadcrumb ,Card} from 'antd';
+import {Rate, Layout, Menu, Breadcrumb, Card, Icon} from 'antd';
 const { Header, Content, Footer} = Layout;
 var addjson = [];
 var currentjson = {};
+const SubMenu = Menu.SubMenu;
 class Detail extends Component {
     constructor(props) {
         super(props);
@@ -11,7 +12,7 @@ class Detail extends Component {
             directors: "",
             casts: "",
             writers: "",
-            rating: { average: 1, rating_people: "" },
+            rating: { average:1 , rating_people: "" },
         }
     }
     componentDidMount() {
@@ -40,7 +41,7 @@ class Detail extends Component {
                         for (let i of currentjson.writers) {
                             tepwriters = tepwriters + i.name + "/";
                         }
-                        let teprating = { average: 1, rating_people: "" };
+                        let teprating = { average: 5, rating_people: "" };
                         teprating.average = parseFloat(currentjson.rating.average);
                         teprating.rating_people = currentjson.rating.rating_people;
                         this.setState({
@@ -68,13 +69,14 @@ class Detail extends Component {
                         defaultSelectedKeys={['1']}
                         style={{ lineHeight: '64px' }}
                     >
-                        <Menu.Item key="1"><a href={`/`}  > 电影列表</a></Menu.Item>
-                        <Menu.Item key="2"><a href={`/charts`}  > 数据可视化</a></Menu.Item>
+                        <Menu.Item key="1"><a href={`/`}  > <Icon type="bars" />电影列表</a></Menu.Item>
+                        <Menu.Item key="2"><a href={`/charts`}  > <Icon type="bar-chart" />数据可视化</a></Menu.Item>
+
                     </Menu>
                 </Header>
                 <Content style={{ padding: '0 50px' }}>
                     <Breadcrumb style={{ margin: '16px 0' }}>
-                        <Breadcrumb.Item>Home</Breadcrumb.Item>
+                        <Breadcrumb.Item>details</Breadcrumb.Item>
                     </Breadcrumb>
 
                     <div style={{ background: '#fff', padding: 24, minHeight: 280,Align: 'center' }}>
@@ -87,7 +89,7 @@ class Detail extends Component {
                         <h2>导演：{this.state.directors}</h2>
                         <h2>主演：{this.state.casts}</h2>
                         <h3>评分：{this.state.rating.average}(评分人数{this.state.rating.rating_people}人)</h3>
-                        <Rate disabled defaultValue={this.state.rating.average} allowHalf />
+                        <Rate disabled value={this.state.rating.average/2} allowHalf />
                         <h3>上映日期：{this.state.data.pubdata}</h3>
                         <h3>时长：{this.state.data.duration}分钟</h3>
                         <h4>原著：{this.state.writers}</h4>
@@ -99,7 +101,7 @@ class Detail extends Component {
                 </Content>
 
                 <Footer style={{ textAlign: 'center' }}>
-                    Ant Design ©2018 Created by Ant UED
+                    同济大学软件学院Web课lab02 ©2018 Created by 白皓月
                 </Footer>
             </Layout>
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-const addjson = []
-var currentjson = {}
+var addjson = [];
+var currentjson = {};
 class Detail extends Component {
-  constructor() {
-    super()
+    constructor(props) {
+    super(props);
     this.state = {
       data: {},
       directors: "",
@@ -23,18 +23,18 @@ class Detail extends Component {
           addjson.push(itemjson)
         }
         for (let currentItem of addjson) {
-          if (currentItem._id == this.props.match.params.id) {
+          if (currentItem._id === this.props.match.params.id) {
             currentjson = currentItem;
             console.log(currentjson);
-            let tepdirect = ""
+            let tepdirect = "";
             for (let i of currentjson.directors) {
               tepdirect += i.name;
             }
-            let tepcasts = ""
+            let tepcasts = "";
             for (let i of currentjson.casts) {
               tepcasts = tepcasts + i.name + "/";
             }
-            let tepwriters = ""
+            let tepwriters = "";
             for (let i of currentjson.writers) {
               tepwriters = tepwriters + i.name + "/";
             }
@@ -59,7 +59,7 @@ class Detail extends Component {
     return (
       <div>
         <h1>{this.state.data.title}</h1>
-        <img src={this.state.data.poster}></img>
+        <img src={this.state.data.poster}/>
         <h2>导演：{this.state.directors}</h2>
         <h2>主演：{this.state.casts}</h2>
         <h2>原著：{this.state.writers}</h2>

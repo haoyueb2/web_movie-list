@@ -18,6 +18,7 @@ class Charts extends Component{
         }
     }
     componentWillMount() {
+
         fetch("./films.json")
             .then(res => res.text())
             .then(text => {
@@ -129,8 +130,8 @@ class Charts extends Component{
                         defaultSelectedKeys={['2']}
                         style={{ lineHeight: '64px' }}
                     >
-                        <Menu.Item key="1"><a href={`/web_lab2_movie-list`}  > <Icon type="bars" />电影列表</a></Menu.Item>
-                        <Menu.Item key="2"><a href={`/web_lab2_movie-list/#/charts`}  > <Icon type="bar-chart" />数据可视化</a></Menu.Item>
+                        <Menu.Item key="1"><a href={`./`}  > <Icon type="bars" />电影列表</a></Menu.Item>
+                        <Menu.Item key="2"><a href={`./#/charts`}  > <Icon type="bar-chart" />数据可视化</a></Menu.Item>
 
                     </Menu>
                 </Header>

@@ -1,15 +1,15 @@
 {
-  "main.css": "/web_lab2_movie-list/static/css/main.11d832ee.chunk.css",
-  "main.js": "/web_lab2_movie-list/static/js/main.07e9dcf3.chunk.js",
-  "main.js.map": "/web_lab2_movie-list/static/js/main.07e9dcf3.chunk.js.map",
-  "runtime~main.js": "/web_lab2_movie-list/static/js/runtime~main.1479361a.js",
-  "runtime~main.js.map": "/web_lab2_movie-list/static/js/runtime~main.1479361a.js.map",
-  "static/css/2.3c1889a4.chunk.css": "/web_lab2_movie-list/static/css/2.3c1889a4.chunk.css",
-  "static/js/2.b30faa11.chunk.js": "/web_lab2_movie-list/static/js/2.b30faa11.chunk.js",
-  "static/js/2.b30faa11.chunk.js.map": "/web_lab2_movie-list/static/js/2.b30faa11.chunk.js.map",
-  "index.html": "/web_lab2_movie-list/index.html",
-  "precache-manifest.f95b679724ea83bcd8aa7951683f65bc.js": "/web_lab2_movie-list/precache-manifest.f95b679724ea83bcd8aa7951683f65bc.js",
-  "service-worker.js": "/web_lab2_movie-list/service-worker.js",
-  "static/css/2.3c1889a4.chunk.css.map": "/web_lab2_movie-list/static/css/2.3c1889a4.chunk.css.map",
-  "static/css/main.11d832ee.chunk.css.map": "/web_lab2_movie-list/static/css/main.11d832ee.chunk.css.map"
+  "main.css": "./static/css/main.11d832ee.chunk.css",
+  "main.js": "./static/js/main.07597a47.chunk.js",
+  "main.js.map": "./static/js/main.07597a47.chunk.js.map",
+  "runtime~main.js": "./static/js/runtime~main.d653cc00.js",
+  "runtime~main.js.map": "./static/js/runtime~main.d653cc00.js.map",
+  "static/css/2.3c1889a4.chunk.css": "./static/css/2.3c1889a4.chunk.css",
+  "static/js/2.017f9fa2.chunk.js": "./static/js/2.017f9fa2.chunk.js",
+  "static/js/2.017f9fa2.chunk.js.map": "./static/js/2.017f9fa2.chunk.js.map",
+  "index.html": "./index.html",
+  "precache-manifest.9a68b51536e05139137e4565ec9ad20b.js": "./precache-manifest.9a68b51536e05139137e4565ec9ad20b.js",
+  "service-worker.js": "./service-worker.js",
+  "static/css/2.3c1889a4.chunk.css.map": "./static/css/2.3c1889a4.chunk.css.map",
+  "static/css/main.11d832ee.chunk.css.map": "./static/css/main.11d832ee.chunk.css.map"
 }

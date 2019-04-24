@@ -1,15 +1,15 @@
 {
-  "main.css": "/movielist/static/css/main.11d832ee.chunk.css",
-  "main.js": "/movielist/static/js/main.5e1b74c5.chunk.js",
-  "main.js.map": "/movielist/static/js/main.5e1b74c5.chunk.js.map",
-  "runtime~main.js": "/movielist/static/js/runtime~main.adab6e74.js",
-  "runtime~main.js.map": "/movielist/static/js/runtime~main.adab6e74.js.map",
-  "static/css/2.3c1889a4.chunk.css": "/movielist/static/css/2.3c1889a4.chunk.css",
-  "static/js/2.041efe3f.chunk.js": "/movielist/static/js/2.041efe3f.chunk.js",
-  "static/js/2.041efe3f.chunk.js.map": "/movielist/static/js/2.041efe3f.chunk.js.map",
-  "index.html": "/movielist/index.html",
-  "precache-manifest.0e8992f5b27f091392a66e5668dd5960.js": "/movielist/precache-manifest.0e8992f5b27f091392a66e5668dd5960.js",
-  "service-worker.js": "/movielist/service-worker.js",
-  "static/css/2.3c1889a4.chunk.css.map": "/movielist/static/css/2.3c1889a4.chunk.css.map",
-  "static/css/main.11d832ee.chunk.css.map": "/movielist/static/css/main.11d832ee.chunk.css.map"
+  "main.css": "/web_lab2_movie-list/static/css/main.11d832ee.chunk.css",
+  "main.js": "/web_lab2_movie-list/static/js/main.5e1b74c5.chunk.js",
+  "main.js.map": "/web_lab2_movie-list/static/js/main.5e1b74c5.chunk.js.map",
+  "runtime~main.js": "/web_lab2_movie-list/static/js/runtime~main.1479361a.js",
+  "runtime~main.js.map": "/web_lab2_movie-list/static/js/runtime~main.1479361a.js.map",
+  "static/css/2.3c1889a4.chunk.css": "/web_lab2_movie-list/static/css/2.3c1889a4.chunk.css",
+  "static/js/2.8cf2c6d2.chunk.js": "/web_lab2_movie-list/static/js/2.8cf2c6d2.chunk.js",
+  "static/js/2.8cf2c6d2.chunk.js.map": "/web_lab2_movie-list/static/js/2.8cf2c6d2.chunk.js.map",
+  "index.html": "/web_lab2_movie-list/index.html",
+  "precache-manifest.e258b697916308d15e5f6fdfacdc5810.js": "/web_lab2_movie-list/precache-manifest.e258b697916308d15e5f6fdfacdc5810.js",
+  "service-worker.js": "/web_lab2_movie-list/service-worker.js",
+  "static/css/2.3c1889a4.chunk.css.map": "/web_lab2_movie-list/static/css/2.3c1889a4.chunk.css.map",
+  "static/css/main.11d832ee.chunk.css.map": "/web_lab2_movie-list/static/css/main.11d832ee.chunk.css.map"
 }

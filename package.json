@@ -2,6 +2,7 @@
   "name": "hello-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://mooooon333.github.io/movielist",
   "dependencies": {
     "antd": "^3.16.3",
     "bizcharts": "^3.5.2",
@@ -15,6 +16,8 @@
     "reqwest": "^2.0.5"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -28,5 +31,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  }
 }

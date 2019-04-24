@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { List,Icon ,Input,Rate,Layout,Menu, Breadcrumb ,Select} from 'antd';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import Detail from './detail'
 import Charts from './charts'
 const Search = Input.Search;
@@ -106,8 +106,8 @@ class Index extends Component {
                         defaultSelectedKeys={['1']}
                         style={{ lineHeight: '64px' }}
                     >
-                        <Menu.Item key="1"><a href={`/`}  > <Icon type="bars" />电影列表</a></Menu.Item>
-                        <Menu.Item key="2"><a href={`/charts`}  > <Icon type="bar-chart" />数据可视化</a></Menu.Item>
+                        <Menu.Item key="1"><a href={`/web_lab2_movie-list`}  > <Icon type="bars" />电影列表</a></Menu.Item>
+                        <Menu.Item key="2"><a href={`/web_lab2_movie-list/#/charts`}  > <Icon type="bar-chart" />数据可视化</a></Menu.Item>
                         <SubMenu
                             key="sub1"
                             title={<span><Icon type="plus-square" /><span>按类别浏览</span></span>}
@@ -173,7 +173,7 @@ class Index extends Component {
                                     >
                                         <List.Item.Meta
                                             //avatar={<Avatar shape = "square" size = {150} src={item.poster} width = {100} alt="logo"/>}
-                                            title={<a href={`/detail/${item._id}`}  >  {item.title}</a>}
+                                            title={<a href={`/web_lab2_movie-list/#/detail/${item._id}`}  >  {item.title}</a>}
                                             description={item.pubdate+"("+item.genres+")"}
                                         />
                                     </List.Item>)}

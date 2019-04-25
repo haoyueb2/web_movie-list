@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Movie-List
 
-## Available Scripts
+同济大学软件学院web课程第二次作业
 
-In the project directory, you can run:
+1652613白皓月
 
-### `npm start`
+页面链接：<https://mooooon333.github.io/web_lab2_movie-list/>
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+github地址：<<https://github.com/mooooon333/web_lab2_movie-list>>
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 作业简介
 
-### `npm run build`
+实现一个简易的电影列表web页面，并使用JavaScript实现一些交互功能。
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 完成情况
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- 使用JavaScript解析films.json文件，并
+  将解析后的内容动态生成为html元素，以列表的形式展示在网页中；
+- 实现了分页功能；
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![img](./image/分页.gif)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- 布局合理简介美观；
+- 实现电影详情页，点击电影名可以实现跳转
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![img](./image/详情.gif)
+- 实现了搜索功能
+  - 按标题
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![img](./image/按标题搜索.gif)
+  - 按类别
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![img](./image/按类别搜索.gif)
+  - 全文搜索
 
-## Learn More
+![img](./image/全文搜索.gif)
+- 数据统计及可视化
+  - 按类别统计并生成可视化图表
+  - 按国家统计并生成可视化图表
+  - 按语言统计并生成可视化图表
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![img](./image/数据可视化.gif)
+- 加入按类别浏览的菜单项
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![img](./image/按类别浏览.gif)

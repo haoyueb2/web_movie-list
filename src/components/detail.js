@@ -15,17 +15,33 @@ class Detail extends Component {
             rating: { average:1 , rating_people: "" },
         }
     }
+    handleJson() {
+        for(let tmp of addjson) {
+            console.log(tmp);
+            for(let tmpIn in tmp) {
+                try {
+                    tmp[tmpIn] = JSON.parse(tmp[tmpIn]);
+                } catch(e) {
+                    console.log("出错"+tmpIn+e);
+                }
+                //tmp[tmpIn] = tmp[tmpIn].substring(0,tmp[tmpIn].length);
+                console.log(tmp[tmpIn]);
+            }
+        }
+    }
     componentDidMount() {
 
-        fetch("./films.json")
-            .then(res => res.text())
-            .then(text => {
-                var textstring = text.split('\n')
 
-                for (let currentvalue of textstring) {
-                    var itemjson = JSON.parse(currentvalue)
-                    addjson.push(itemjson)
-                }
+        fetch('/api/films/'+this.props.match.params.page)
+            .then(res => res.json())
+            .then(json =>  {
+                console.log(json)
+                addjson = json;
+                console.log(addjson);
+                this.handleJson();
+                this.setState({
+                    data: addjson,
+                });
                 for (let currentItem of addjson) {
                     if (currentItem._id === this.props.match.params.id) {
                         currentjson = currentItem;

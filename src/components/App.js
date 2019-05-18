@@ -24,6 +24,8 @@ class Index extends Component {
         super(props);
         this.state = {
             data: [],
+            pageNum:10000,
+            pageId:1,
         }
     }
     componentWillMount() {
@@ -200,10 +202,13 @@ class Index extends Component {
                             pagination={{
                                 onChange: (page) => {
                                     this.fetchData(page);
+                                    this.setState({
+                                        pageId : page
+                                    })
                                     console.log(page);
                                 },
                                 pageSize: 10,
-                                total : 10000,
+                                total : this.state.pageNum,
                             }}
                             dataSource={this.state.data}
                             footer={< div > <b>movie</b> list</div >}
@@ -219,7 +224,7 @@ class Index extends Component {
                                     >
                                         <List.Item.Meta
                                             //avatar={<Avatar shape = "square" size = {150} src={item.poster} width = {100} alt="logo"/>}
-                                            title={<a href={`./#/detail/${item._id}`}  >  {item.title}</a>}
+                                            title={<a href={`./#/${this.state.pageId}/${item._id}`}  >  {item.title}</a>}
                                             description={item.pubdate+"("+item.genres+")"}
                                         />
                                     </List.Item>)}
@@ -243,7 +248,7 @@ class RouterIndex extends Component {
         return(
             <Router>
                 <Route exact path="/" component={Index} />
-                <Route path = "/detail/:id" component={Detail} />
+                <Route path = "/:page/:id" component={Detail} />
                 <Route path = "/charts" component={Charts} />
             </Router>)
     }

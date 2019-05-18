@@ -26,51 +26,18 @@ class Index extends Component {
             data: [],
             pageNum:10000,
             pageId:1,
+            genres:"all",
         }
     }
     componentWillMount() {
         this.fetchData(1)
     }
 
-    fetchData1 () {
-        fetch("./films.json")
-            .then(res => res.text())
-            .then(text => {
-                let textstring = text.split('\n');
-                addjson = [];
-                for (let currentvalue of textstring) {
-                    let itemjson = JSON.parse(currentvalue);
-
-                    addjson.push(itemjson)
-                }
-
-                this.setState({
-                    data: addjson,
-                });
-                console.log(addjson)
-            });
-
-    }
-    fetchData2() {
-        //fetch('http://47.100.180.219:5000/api/films')
-        fetch('/api/films')
-        .then(res => res.json())
-        .then(json =>  {
-            console.log(json)
-            addjson = json;
-            console.log(addjson);
-            this.handleJson();
-            this.setState({
-                data: addjson,
-            });
-        });
-    }
     fetchData(page) {
-        //fetch('http://47.100.180.219:5000/api/films')
         fetch('/api/films/'+page)
             .then(res => res.json())
             .then(json =>  {
-                console.log(json)
+                console.log(json);
                 addjson = json;
                 console.log(addjson);
                 this.handleJson();
@@ -103,20 +70,31 @@ class Index extends Component {
         this.setState({
             data:searchResult
         })
-
     }
     searchGenre(value) {
-        let searchResult=[];
-        for(let eachitem of addjson) {
-            for(let eachgen of eachitem.genres) {
-                if (eachgen.indexOf(value) !== -1) {
-                    searchResult.push(eachitem);
-                }
-            }
-        }
-        this.setState({
-            data:searchResult
-        })
+        fetch('/api/'+value)
+            .then(res => res.text())
+            .then(text=>  {
+                console.log(text);
+                this.setState({
+                    pageNum: text,
+                    genres:value,
+                });
+            });
+        this.fetchGenresData(value,1);
+    }
+    fetchGenresData(genres,page) {
+        fetch('/api/'+genres+'/'+page)
+            .then(res => res.json())
+            .then(json =>  {
+                console.log(json);
+                addjson = json;
+                console.log(addjson);
+                this.handleJson();
+                this.setState({
+                    data: addjson,
+                });
+            });
     }
     searchAll(value) {
         let searchResult=[];
@@ -127,7 +105,8 @@ class Index extends Component {
 
         }
         this.setState({
-            data:searchResult
+            data:searchResult,
+
         })
     }
 
@@ -201,10 +180,14 @@ class Index extends Component {
                             size="large"
                             pagination={{
                                 onChange: (page) => {
-                                    this.fetchData(page);
+                                    if(this.state.genres === "all") {
+                                        this.fetchData(page);
+                                    } else {
+                                        this.fetchGenresData(this.state.genres,page);
+                                    }
                                     this.setState({
                                         pageId : page
-                                    })
+                                    });
                                     console.log(page);
                                 },
                                 pageSize: 10,

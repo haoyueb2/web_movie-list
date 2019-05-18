@@ -1,6 +1,7 @@
 {"_id":"1299731",
     "directors":[{"name":"马丁·里特","id":"1032478"}],
-    "genres":["剧情","动作","西部"],"season_count":"",
+    "genres":["剧情","动作","西部"],
+    "season_count":"",
     "rating":{"average":"8.0","rating_people":"145","stars":["24.0","53.8","19.2","2.9","0.0"]},
     "pubdate":["1967-03-21"],
     "countries":["美国"],
@@ -23,5 +24,4 @@
     "year":"1967",
     "duration":"111",
     "douban_site":"",
-    "aka":[""]
-}
+    "aka":[""]}

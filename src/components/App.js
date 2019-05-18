@@ -27,10 +27,10 @@ class Index extends Component {
         }
     }
     componentWillMount() {
-        this.fetchData()
+        this.fetchData(1)
     }
 
-    fetchData () {
+    fetchData1 () {
         fetch("./films.json")
             .then(res => res.text())
             .then(text => {
@@ -45,8 +45,51 @@ class Index extends Component {
                 this.setState({
                     data: addjson,
                 });
+                console.log(addjson)
             });
-        console.log(addjson)
+
+    }
+    fetchData2() {
+        //fetch('http://47.100.180.219:5000/api/films')
+        fetch('/api/films')
+        .then(res => res.json())
+        .then(json =>  {
+            console.log(json)
+            addjson = json;
+            console.log(addjson);
+            this.handleJson();
+            this.setState({
+                data: addjson,
+            });
+        });
+    }
+    fetchData(page) {
+        //fetch('http://47.100.180.219:5000/api/films')
+        fetch('/api/films/'+page)
+            .then(res => res.json())
+            .then(json =>  {
+                console.log(json)
+                addjson = json;
+                console.log(addjson);
+                this.handleJson();
+                this.setState({
+                    data: addjson,
+                });
+            });
+    }
+    handleJson() {
+        for(let tmp of addjson) {
+            console.log(tmp);
+            for(let tmpIn in tmp) {
+                try {
+                    tmp[tmpIn] = JSON.parse(tmp[tmpIn]);
+                } catch(e) {
+                    console.log("出错"+tmpIn+e);
+                }
+                //tmp[tmpIn] = tmp[tmpIn].substring(0,tmp[tmpIn].length);
+                console.log(tmp[tmpIn]);
+            }
+        }
     }
     searchTitle(value) {
         let searchResult=[];
@@ -156,9 +199,11 @@ class Index extends Component {
                             size="large"
                             pagination={{
                                 onChange: (page) => {
+                                    this.fetchData(page);
                                     console.log(page);
                                 },
                                 pageSize: 10,
+                                total : 10000,
                             }}
                             dataSource={this.state.data}
                             footer={< div > <b>movie</b> list</div >}

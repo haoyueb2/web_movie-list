@@ -1,14 +1,14 @@
 
 
 import React, { Component } from 'react';
-import {G2, Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, Facet, Util} from "bizcharts";
-import {Rate, Layout, Menu, Breadcrumb, Card, Icon} from 'antd';
+import {G2, Chart, Geom, Axis, Tooltip} from "bizcharts";
+import { Layout, Menu, Breadcrumb,  Icon} from 'antd';
 const { Header, Content, Footer} = Layout;
 // 数据源
 var addjson = [];
 const SubMenu = Menu.SubMenu;
-//const webBase = 'https://www.mooooon333.cn:5000';
-const webBase = '';
+const webBase = 'https://www.mooooon333.cn:5000';
+//const webBase = '';
 class Charts extends Component{
     constructor(props) {
         super(props);
@@ -34,22 +34,6 @@ class Charts extends Component{
         }
     }
     componentWillMount() {
-
-        fetch("./films.json")
-            .then(res => res.text())
-            .then(text => {
-                let textstring = text.split('\n');
-                for (let currentvalue of textstring) {
-                    let itemjson = JSON.parse(currentvalue);
-                    addjson.push(itemjson)
-                }
-                this.setState({
-                    data: addjson,
-
-
-
-                });
-            });
         fetch(webBase+"/api/genre/all")
             .then(res => res.json())
             .then(json => {

@@ -3,8 +3,8 @@ import {Rate, Layout, Menu, Breadcrumb, Card, Icon} from 'antd';
 const { Header, Content, Footer} = Layout;
 var addjson = [];
 var currentjson = {};
-//const webBase = 'https://www.mooooon333.cn:5000';
-const webBase = '';
+const webBase = 'https://www.mooooon333.cn:5000';
+//const webBase = '';
 const SubMenu = Menu.SubMenu;
 class Detail extends Component {
     constructor(props) {

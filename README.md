@@ -4,7 +4,7 @@
 
 页面链接：<https://mooooon333.github.io/web_lab2_movie-list/>
 
-github地址：<<https://github.com/mooooon333/web_lab2_movie-list>>
+github地址：<https://github.com/mooooon333/web_lab2_movie-list>
 
 **由于此次主要功能和上次作业一样，主要变化在于数据量的增大和加入后端和数据库的交互，不再制作专门的gif图，功能呈现的gif图仍使用上次的，请查看image文件夹**
 
@@ -16,11 +16,11 @@ github地址：<<https://github.com/mooooon333/web_lab2_movie-list>>
 
 数据库
 
-![1558269555678](D:/照片/markdown/1558269555678.png)
+![1558269555678](./image/1558269555678.png)
 
-![1558269641812](D:/照片/markdown/1558269641812.png)
+![1558269641812](./image/1558269641812.png)
 
-![1558269684932](D:/照片/markdown/1558269684932.png)
+![1558269684932](./image/1558269684932.png)
 
 共有10000行数据
 
@@ -149,11 +149,11 @@ fetch(webBase+'/api/id/'+this.props.match.params.id)
 
 有按类别，按国家和按语言统计，由于一部电影可能同时属于几个类别，在几个国家上映，也有多种发行语言。所以总数是不等于10000的。
 
-![1558274729929](D:/照片/markdown/1558274729929.png)
+![1558274729929](./image/1558274729929.png)
 
-![1558274743678](D:/照片/markdown/1558274743678.png)
+![1558274743678](./image/1558274743678.png)
 
-![1558274813524](D:/照片/markdown/1558274813524.png)
+![1558274813524](./image/1558274813524.png)
 
 后端代码还是以类别的统计为例
 

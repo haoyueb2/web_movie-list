@@ -27,7 +27,6 @@ class Index extends Component {
         this.state = {
             data: [],
             pageNum:10000,
-            pageId:1,
             genre:"",
             title:"",
             all:"",
@@ -44,7 +43,6 @@ class Index extends Component {
             .then(json =>  {
                 console.log(json);
                 addjson = json;
-                console.log(addjson);
                 this.handleJson();
                 this.setState({
                     data: addjson,
@@ -223,10 +221,9 @@ class Index extends Component {
                                         this.fetchGenreData(this.state.genre, page);
                                     } else if(this.state.listContent === "title") {
                                         this.fetchTitleData(this.state.title, page);
+                                    } else if(this.state.listContent === "all") {
+                                        this.fetchAllData(this.state.all, page);
                                     }
-                                    this.setState({
-                                        pageId : page
-                                    });
                                     console.log(page);
                                 },
                                 pageSize: 10,

@@ -174,7 +174,7 @@ class Charts extends Component{
                     <Breadcrumb style={{ margin: '16px 0' }}>
                         <Breadcrumb.Item>charts</Breadcrumb.Item>
                     </Breadcrumb>
-
+                    <h3>加载时间较长请耐心等待,鼠标移到对应列上可看清详细名称和数量</h3>
                     <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
                         <Chart height={400} data={this.state.genresNumber} scale={gerecols} forceFit>
                             <Axis name="genre" />

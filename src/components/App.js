@@ -11,6 +11,8 @@ const { Header, Content, Footer} = Layout;
 const Option = Select.Option;
 var howsearch = "title";
 const SubMenu = Menu.SubMenu;
+//const webBase = 'https://www.mooooon333.cn:5000';
+const webBase = '';
 const IconText = ({ type, text }) => (
     <span>
     <Icon type={type} style={{ marginRight: 8 }} />
@@ -26,7 +28,10 @@ class Index extends Component {
             data: [],
             pageNum:10000,
             pageId:1,
-            genres:"all",
+            genre:"",
+            title:"",
+            all:"",
+            listContent:"",
         }
     }
     componentWillMount() {
@@ -34,7 +39,7 @@ class Index extends Component {
     }
 
     fetchData(page) {
-        fetch('/api/films/'+page)
+        fetch(webBase+'/api/films/'+page)
             .then(res => res.json())
             .then(json =>  {
                 console.log(json);
@@ -53,69 +58,95 @@ class Index extends Component {
                 try {
                     tmp[tmpIn] = JSON.parse(tmp[tmpIn]);
                 } catch(e) {
-                    console.log("出错"+tmpIn+e);
+                    //console.log("出错"+tmpIn+e);
                 }
                 //tmp[tmpIn] = tmp[tmpIn].substring(0,tmp[tmpIn].length);
-                console.log(tmp[tmpIn]);
+                //console.log(tmp[tmpIn]);
             }
         }
     }
     searchTitle(value) {
-        let searchResult=[];
-        for(let eachitem of addjson) {
-            if(eachitem.title.indexOf(value) !== -1) {
-                searchResult.push(eachitem);
-            }
-        }
-        this.setState({
-            data:searchResult
-        })
-    }
-    searchGenre(value) {
-        fetch('/api/'+value)
+        fetch(webBase+'/api/title/'+value)
             .then(res => res.text())
             .then(text=>  {
                 console.log(text);
                 this.setState({
                     pageNum: text,
-                    genres:value,
+                    title:value,
                 });
             });
-        this.fetchGenresData(value,1);
+        this.fetchTitleData(value,1);
     }
-    fetchGenresData(genres,page) {
-        fetch('/api/'+genres+'/'+page)
+    fetchTitleData(title,page) {
+        fetch(webBase+'/api/title/'+title+'/'+page)
             .then(res => res.json())
             .then(json =>  {
-                console.log(json);
                 addjson = json;
-                console.log(addjson);
                 this.handleJson();
                 this.setState({
                     data: addjson,
                 });
             });
     }
-    searchAll(value) {
-        let searchResult=[];
-        for(let eachitem of addjson) {
-                if (JSON.stringify(eachitem).indexOf(value) !== -1) {
-                    searchResult.push(eachitem);
-                }
+    searchGenre(value) {
+        fetch(webBase+'/api/genre/'+value)
+            .then(res => res.text())
+            .then(text=>  {
+                console.log(text);
+                this.setState({
+                    pageNum: text,
+                    genre:value,
+                });
+            });
 
-        }
-        this.setState({
-            data:searchResult,
-
-        })
+        this.fetchGenreData(value,1);
     }
+    fetchGenreData(genre,page) {
+        fetch(webBase+'/api/genre/'+genre+'/'+page)
+            .then(res => res.json())
+            .then(json =>  {
+                addjson = json;
+                this.handleJson();
+                this.setState({
+                    data: addjson,
+                });
+                console.log("页调试："+this.state.listContent,this.state.genre);
+            });
+    }
+    searchAll(value) {
+        fetch(webBase+'/api/all/'+value)
+            .then(res => res.text())
+            .then(text=>  {
+                console.log(text);
+                this.setState({
+                    pageNum: text,
+                    all:value,
+                });
+            });
 
+        this.fetchAllData(value,1);
+    }
+    fetchAllData(all,page) {
+        fetch(webBase+'/api/all/'+all+'/'+page)
+            .then(res => res.json())
+            .then(json =>  {
+                addjson = json;
+                this.handleJson();
+                this.setState({
+                    data: addjson,
+                });
+                console.log("页调试："+this.state.listContent,this.state.genre);
+            });
+    }
 
 
     render() {
 
         const selectBefore = (
-            <Select defaultValue="按标题" style={{ width: 90 }}  onChange={value => {howsearch = value;}}>
+            <Select defaultValue="按标题" style={{ width: 90 }} onChange={value => {
+                howsearch = value;
+            }}>
+
                 <Option value="title">按标题</Option>
                 <Option value="genre">按类别</Option>
                 <Option value="all">全文搜索</Option>
@@ -138,6 +169,9 @@ class Index extends Component {
                             title={<span><Icon type="plus-square" /><span>按类别浏览</span></span>}
                             onClick={(key)=>{
                                 console.log(key.key);
+                                this.setState({
+                                    listContent : "genre",
+                                });
                                 this.searchGenre(key.key);
                             }}
                         >
@@ -166,6 +200,9 @@ class Index extends Component {
                             enterButton="Search"
                             size="large"
                             onSearch={(value) => {
+                                this.setState({
+                                    listContent : howsearch,
+                                });
                                 if(howsearch ==="title") {
                                     this.searchTitle(value);
                                 } else if(howsearch === "genre") {
@@ -180,10 +217,12 @@ class Index extends Component {
                             size="large"
                             pagination={{
                                 onChange: (page) => {
-                                    if(this.state.genres === "all") {
+                                    if(this.state.listContent === "") {
                                         this.fetchData(page);
-                                    } else {
-                                        this.fetchGenresData(this.state.genres,page);
+                                    } else if(this.state.listContent === "genre") {
+                                        this.fetchGenreData(this.state.genre, page);
+                                    } else if(this.state.listContent === "title") {
+                                        this.fetchTitleData(this.state.title, page);
                                     }
                                     this.setState({
                                         pageId : page
@@ -207,7 +246,7 @@ class Index extends Component {
                                     >
                                         <List.Item.Meta
                                             //avatar={<Avatar shape = "square" size = {150} src={item.poster} width = {100} alt="logo"/>}
-                                            title={<a href={`./#/${this.state.pageId}/${item._id}`}  >  {item.title}</a>}
+                                            title={<a href={`./#/detail/${item._id}`}  >  {item.title}</a>}
                                             description={item.pubdate+"("+item.genres+")"}
                                         />
                                     </List.Item>)}
@@ -216,7 +255,7 @@ class Index extends Component {
                 </Content>
 
                 <Footer style={{ textAlign: 'center' }}>
-                    同济大学软件学院Web课lab02 ©2018 Created by 白皓月
+                    同济大学软件学院Web课lab03 ©2018 Created by 白皓月
                 </Footer>
             </Layout>
             )
@@ -231,7 +270,7 @@ class RouterIndex extends Component {
         return(
             <Router>
                 <Route exact path="/" component={Index} />
-                <Route path = "/:page/:id" component={Detail} />
+                <Route path = "/detail/:id" component={Detail} />
                 <Route path = "/charts" component={Charts} />
             </Router>)
     }

@@ -3,6 +3,8 @@ import {Rate, Layout, Menu, Breadcrumb, Card, Icon} from 'antd';
 const { Header, Content, Footer} = Layout;
 var addjson = [];
 var currentjson = {};
+//const webBase = 'https://www.mooooon333.cn:5000';
+const webBase = '';
 const SubMenu = Menu.SubMenu;
 class Detail extends Component {
     constructor(props) {
@@ -32,7 +34,7 @@ class Detail extends Component {
     componentDidMount() {
 
 
-        fetch('/api/films/'+this.props.match.params.page)
+        fetch(webBase+'/api/id/'+this.props.match.params.id)
             .then(res => res.json())
             .then(json =>  {
                 console.log(json)
@@ -118,7 +120,7 @@ class Detail extends Component {
                 </Content>
 
                 <Footer style={{ textAlign: 'center' }}>
-                    同济大学软件学院Web课lab02 ©2018 Created by 白皓月
+                    同济大学软件学院Web课lab03 ©2018 Created by 白皓月
                 </Footer>
             </Layout>
 

@@ -7,6 +7,8 @@ const { Header, Content, Footer} = Layout;
 // 数据源
 var addjson = [];
 const SubMenu = Menu.SubMenu;
+//const webBase = 'https://www.mooooon333.cn:5000';
+const webBase = '';
 class Charts extends Component{
     constructor(props) {
         super(props);
@@ -15,6 +17,20 @@ class Charts extends Component{
             genresNumber: [],
             countryNumber:[],
             languageNumber:[],
+        }
+    }
+    handleJson() {
+        for(let tmp of addjson) {
+            //console.log(tmp);
+            for(let tmpIn in tmp) {
+                try {
+                    tmp[tmpIn] = JSON.parse(tmp[tmpIn]);
+                } catch(e) {
+                    //console.log("出错"+tmpIn+e);
+                }
+                //tmp[tmpIn] = tmp[tmpIn].substring(0,tmp[tmpIn].length);
+                //console.log(tmp[tmpIn]);
+            }
         }
     }
     componentWillMount() {
@@ -29,11 +45,46 @@ class Charts extends Component{
                 }
                 this.setState({
                     data: addjson,
+
+
+
+                });
+            });
+        fetch(webBase+"/api/genre/all")
+            .then(res => res.json())
+            .then(json => {
+                //console.log(json);
+                addjson = json;
+                //console.log(addjson);
+                this.handleJson();
+                this.setState({
+                    data: addjson,
                     genresNumber:this.genreAnalyze(addjson),
+                });
+            });
+        fetch(webBase+"/api/country/all")
+            .then(res => res.json())
+            .then(json => {
+                console.log(json);
+                addjson = json;
+                //console.log(addjson);
+                this.handleJson();
+                this.setState({
+                    data: addjson,
                     countryNumber:this.countryAnalyze(addjson),
+                });
+            });
+        fetch(webBase+"/api/language/all")
+            .then(res => res.json())
+            .then(json => {
+                console.log(json);
+                addjson = json;
+                //console.log(addjson);
+                this.handleJson();
+                this.setState({
+                    data: addjson,
                     languageNumber:this.languageAnalyze(addjson),
                 });
-                console.log(this.state.languageNumber)
             });
     }
     genreAnalyze(addjson) {
@@ -88,38 +139,38 @@ class Charts extends Component{
                 }
             }
         }
+
         return analysis;
     }
 
-    searchGenre(value) {
-        let searchResult=[];
-        for(let eachitem of addjson) {
-            for(let eachgen of eachitem.genres) {
-                if (eachgen.indexOf(value) !== -1) {
-                    searchResult.push(eachitem);
-                }
-            }
-        }
-        this.setState({
-            data:searchResult
-        })
-    }
     render() {
         const gerecols = {
             movieNumber: {
-                tickInterval: 20
+                tickInterval: 200
             }
         };
         const countrycols = {
             movieNumber: {
-                tickInterval: 10
+                tickInterval: 200
             }
         };
         const languagecols = {
             movieNumber: {
-                tickInterval: 10
+                tickInterval: 200
             }
         };
+        const label = {
+            rotate: 70,
+            textStyle: {
+                textAlign: 'center', // 文本对齐方向，可取值为： start center end
+                fill: '#404040', // 文本的颜色
+                fontSize: '10', // 文本大小
+                fontWeight: 'bold', // 文本粗细
+                textBaseline: 'top' // 文本基准线，可取 top middle bottom，默认为middle
+
+            }
+        }
+
         return (
             <Layout className="layout">
                 <Header>
@@ -153,7 +204,7 @@ class Charts extends Component{
                             <Geom type="interval" position="genre*movieNumber" color="genre" />
                         </Chart>
                         <Chart height={400} data={this.state.countryNumber} scale={countrycols} forceFit>
-                            <Axis name="country" />
+                            <Axis name="country"  label = {label}/>
                             <Axis name="movieNumber" />
 
                             <Tooltip
@@ -164,7 +215,7 @@ class Charts extends Component{
                             <Geom type="interval" position="country*movieNumber" color="country" />
                         </Chart>
                         <Chart height={400} data={this.state.languageNumber} scale={languagecols} forceFit>
-                            <Axis name="language" />
+                            <Axis name="language" label = {label}/>
                             <Axis name="movieNumber" />
 
                             <Tooltip
@@ -178,7 +229,7 @@ class Charts extends Component{
                 </Content>
 
                 <Footer style={{ textAlign: 'center' }}>
-                    同济大学软件学院Web课lab02 ©2018 Created by 白皓月
+                    同济大学软件学院Web课lab03 ©2018 Created by 白皓月
                 </Footer>
             </Layout>)
     }

@@ -1,6 +1,4 @@
-**同济大学软件学院web课程第三次作业**
-
-**1652613白皓月**
+**web课程第三次作业**
 
 页面链接：<https://mooooon333.github.io/web_lab2_movie-list/>
 
